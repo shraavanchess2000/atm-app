@@ -1,0 +1,27 @@
+<form #overviewForm="ngForm">
+  <label class="row justify-content-center">View bills currently available and transaction history.</label>
+  <div class="form-group">
+    <div class="row justify-content-center">
+      <label for="numberOfHundreds" class="col-2 center-align">Number of $100s</label>
+      <label for="numberOfFifties" class="col-2 center-align">Number of $50s</label>
+      <label for="numberOfTwenties" class="col-2 center-align">Number of $20s</label>
+      <label for="numberOfTens" class="col-2 center-align">Number of $10s</label>
+      <label for="numberOfFives" class="col-2 center-align">Number of $5s</label>
+      <label for="numberOfOnes" class="col-2 center-align">Number of $1s</label>
+    </div>
+    <div class="row justify-content-center">
+      <span class="col-2"><input readonly type="number" class="form-control center-align" id="numberOfHundreds" [(ngModel)]="numbersOfBills.numberOfHundreds" name="numberOfHundreds"></span>
+      <span class="col-2"><input readonly type="number" class="form-control center-align" id="numberOfFifties" [(ngModel)]="numbersOfBills.numberOfFifties" name="numberOfFifties"></span>
+      <span class="col-2"><input readonly type="number" class="form-control center-align" id="numberOfTwenties" [(ngModel)]="numbersOfBills.numberOfTwenties" name="numberOfTwenties"></span>
+      <span class="col-2"><input readonly type="number" class="form-control center-align" id="numberOfTens" [(ngModel)]="numbersOfBills.numberOfTens" name="numberOfTens"></span>
+      <span class="col-2"><input readonly type="number" class="form-control center-align" id="numberOfFives" [(ngModel)]="numbersOfBills.numberOfFives" name="numberOfFives"></span>
+      <span class="col-2"><input readonly type="number" class="form-control center-align" id="numberOfOnes" [(ngModel)]="numbersOfBills.numberOfOnes" name="numberOfOnes"></span>
+    </div>
+  </div>
+  <div class="row justify-content-center padding-bottom-3-percent">
+    <button type="button" class="btn btn-primary" routerLink="">Go Back</button>
+  </div>
+</form>
+<div *ngFor="let record of transactionHistory" [ngClass]="(record[0] == false)?'alert-danger':'alert-success'" class="alert row justify-content-center">
+  {{record[1]}}
+</div>

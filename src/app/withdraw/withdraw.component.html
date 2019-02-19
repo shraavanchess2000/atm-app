@@ -1,0 +1,26 @@
+<form #withdrawalForm="ngForm" (ngSubmit)="onSubmit(); withdrawalForm.reset()">
+  <div class="form-group">
+    <label for="withdrawalAmount" class="row justify-content-center">Enter dollar amount to withdraw.</label>
+    <div class="row justify-content-center">
+      <span>$</span>
+      <span class="col-3"><input type="number" class="form-control center-align" id="withdrawalAmount" aria-describedby="withdrawalNote" placeholder="Enter amount" min="1" pattern="^[1-9]+[0-9]*$" required [(ngModel)]="withdrawalAmount" name="withdrawalAmount"></span>
+    </div>
+    <div class="row justify-content-center">
+      <small id="withdrawalNote" class="form-text text-muted">Amount must be in whole dollars. Minimum withdrawal amount is $1.</small>
+    </div>
+  </div>
+  <div class="row justify-content-center padding-bottom-1-percent">
+    <button class="btn btn-primary" type="submit" [disabled]="!withdrawalForm.form.valid">Withdraw</button>
+  </div>
+  <div class="row justify-content-center padding-bottom-3-percent">
+    <button type="button" class="btn btn-primary" routerLink="">Go Back</button>
+  </div>
+</form>
+<div [hidden]="sufficientFunds == true"
+     class="alert alert-danger row justify-content-center">
+  Insufficient Funds
+</div>
+<div [hidden]="sufficientFunds == false || dispensedAmount == 0"
+     class="alert alert-success row justify-content-center">
+  Dispensed ${{dispensedAmount}}
+</div>

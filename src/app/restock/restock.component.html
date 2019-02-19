@@ -1,0 +1,31 @@
+<form #restockForm="ngForm" (ngSubmit)="onSubmit()">
+  <label class="row justify-content-center">Restock the ATM with bills.</label>
+  <div class="form-group">
+    <div class="row justify-content-center">
+      <label for="numberOfHundreds" class="col-2 center-align">Number of $100s</label>
+      <label for="numberOfFifties" class="col-2 center-align">Number of $50s</label>
+      <label for="numberOfTwenties" class="col-2 center-align">Number of $20s</label>
+      <label for="numberOfTens" class="col-2 center-align">Number of $10s</label>
+      <label for="numberOfFives" class="col-2 center-align">Number of $5s</label>
+      <label for="numberOfOnes" class="col-2 center-align">Number of $1s</label>
+    </div>
+    <div class="row justify-content-center">
+      <span class="col-2"><input type="number" class="form-control center-align" id="numberOfHundreds" min="0" required pattern="[0-9]+" [(ngModel)]="numberOfHundreds" name="numberOfHundreds"></span>
+      <span class="col-2"><input type="number" class="form-control center-align" id="numberOfFifties" min="0" required pattern="[0-9]+" [(ngModel)]="numberOfFifties" name="numberOfFifties"></span>
+      <span class="col-2"><input type="number" class="form-control center-align" id="numberOfTwenties" min="0" required pattern="[0-9]+" [(ngModel)]="numberOfTwenties" name="numberOfTwenties"></span>
+      <span class="col-2"><input type="number" class="form-control center-align" id="numberOfTens" min="0" required pattern="[0-9]+" [(ngModel)]="numberOfTens" name="numberOfTens"></span>
+      <span class="col-2"><input type="number" class="form-control center-align" id="numberOfFives" min="0" required pattern="[0-9]+" [(ngModel)]="numberOfFives" name="numberOfFives"></span>
+      <span class="col-2"><input type="number" class="form-control center-align" id="numberOfOnes" min="0" required pattern="[0-9]+" [(ngModel)]="numberOfOnes" name="numberOfOnes"></span>
+    </div>
+  </div>
+  <div class="row justify-content-center padding-bottom-1-percent">
+    <button class="btn btn-primary" type="submit" [disabled]="!restockForm.form.valid">Restock</button>
+  </div>
+  <div class="row justify-content-center padding-bottom-3-percent">
+    <button type="button" class="btn btn-primary" routerLink="">Go Back</button>
+  </div>
+</form>
+<div [hidden]="restocked == false"
+     class="alert alert-success row justify-content-center">
+  Restock successful!
+</div>
